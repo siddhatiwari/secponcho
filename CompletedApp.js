@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, TextInput, View, FlatList, SafeAreaView, KeyboardAvoidingView, TouchableOpacity } from 'react-native';
+import { Text, TextInput, View, FlatList, SafeAreaView, KeyboardAvoidingView, TouchableOpacity } from 'react-native';
 
 import { rdb, firebase } from './firebase';
 import formatDate from './formatDate';
+import colors from './colors';
 
 export default function App() {
   const [messages, setMessages] = useState([]);
@@ -41,7 +42,6 @@ export default function App() {
       <FlatList 
         inverted
         data={messages}
-        style={{ width: '100%' }}
         contentContainerStyle={{
           paddingTop: 20
         }}
@@ -75,13 +75,13 @@ export default function App() {
   );
 }
 
-const styles = StyleSheet.create({
+const styles = {
   input: {
     padding: 8,
     paddingLeft: 24,
     paddingRight: 24,
     fontSize: 16,
-    backgroundColor: '#F7F7F7',
+    backgroundColor: colors.inputGray,
     flex: 1,
   },
   nameInput: {
@@ -98,19 +98,14 @@ const styles = StyleSheet.create({
   },
   messageText: {
     color: 'white',
-    flex: 0,
   },
   message: {
-    backgroundColor: '#3399FF',
+    backgroundColor: colors.messageBlue,
     padding: 8,
     borderRadius: 14,
-    flexShrink: 1,
-    flex: 0,    
-    flexGrow: 0,
     paddingLeft: 14,
     paddingRight: 14,
     alignSelf: 'flex-start',
-    flex: -1
   },
   messageInputContainer: {
     flexDirection: 'row',
@@ -118,14 +113,12 @@ const styles = StyleSheet.create({
   },
   sendMessageButton: {
     borderRadius: 12,
-    backgroundColor: '#3399FF',
+    backgroundColor: colors.messageBlue,
     height: 24,
     width: 24,
   },
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
-});
+};
